@@ -9,7 +9,32 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" themes
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
+
+" something to indent
+Plugin 'vim-scripts/indentpython.vim'
+
+" complete utility
+Bundle 'Valloric/YouCompleteMe'
+
+" syntax checker
+Plugin 'scrooloose/syntastic'
+
+" PEP8 alarm
+Plugin 'nvie/vim-flake8'
+
+" File searcher
+Plugin 'kien/ctrlp.vim'
+
+" git for vim
+Plugin 'tpope/vim-fugitive'
+
+" Folding python indent
+Plugin 'tmhedberg/SimpylFold'
+
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -43,4 +68,35 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+
+"Usefull movement mappings
 inoremap jk <ESC>
+inoremap <ESC> <nop>
+
+
+"Usefull writting mappings
+inoremap [] []<ESC>i
+inoremap () ()<ESC>i
+inoremap <> <><ESC>i
+inoremap "" ""<ESC>i
+inoremap '' ''<ESC>i
+
+syntax on
+set nu
+
+" python part
+let python_highlight_all=1
+noremap <SPACE> za
+" this is for folding plugin to work in some cases
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+
+
+if has('gui_running')
+    set background=dark
+    colorscheme solarized
+else
+    colorscheme zenburn
+endif
+
+
