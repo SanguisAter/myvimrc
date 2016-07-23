@@ -35,6 +35,9 @@ Plugin 'tpope/vim-fugitive'
 " Folding python indent
 Plugin 'tmhedberg/SimpylFold'
 
+" Gundo vim
+Plugin 'sjl/gundo.vim'
+
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -69,10 +72,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
-"Usefull movement mappings
-inoremap jk <ESC>
-inoremap <ESC> <nop>
 
+"Usefull movement mappings
+"inoremap jk <ESC>
+"inoremap <ESC> <nop>
+inoremap <M-a> <ESC>A
 
 "Usefull writting mappings
 inoremap [] []<ESC>i
@@ -81,16 +85,23 @@ inoremap <> <><ESC>i
 inoremap "" ""<ESC>i
 inoremap '' ''<ESC>i
 
-syntax on
-set nu
 
-" python part
+""""""""""" python part
 let python_highlight_all=1
-noremap <SPACE> za
 " this is for folding plugin to work in some cases
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
+
+
+""""""""""" UI Config
+set tabstop=4       " number of visual spaces per TAB
+set expandtab	    " expand tam into spaces
+set showcmd
+set cursorline
+syntax on
+set nu
+set guifont=Anonymous\ Pro\ 14
 
 if has('gui_running')
     set background=dark
@@ -99,7 +110,26 @@ else
     colorscheme zenburn
 endif
 
+filetype indent on " load filetype specific indent files
+set wildmenu
+set lazyredraw      " redraw only when needed
+set showmatch       "highlight [(<>)]
 
-set tabstop=4       " number of visual spaces per TAB
-set expandtab	    " expand tam into spaces
 
+" Searching
+set hlsearch
+
+
+" Folding
+set foldenable " enable folding
+set foldlevelstart=10 "open most folds by default
+set foldnestmax=10
+noremap <SPACE> za
+set foldmethod=indent
+
+nnoremap gV `[v`] " visually selects the block of characters last inserted
+
+
+" leader shortcuts
+let mapleader="," " leader is comma
+nnoremap <leader>u :GundoToggle<CR>
