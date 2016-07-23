@@ -100,3 +100,6 @@ else
 endif
 
 
+set tabstop=4       " number of visual spaces per TAB
+set expandtab	    " expand tam into spaces
+
