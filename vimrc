@@ -81,9 +81,14 @@ inoremap <M-a> <ESC>A
 "Usefull writting mappings
 inoremap [] []<ESC>i
 inoremap () ()<ESC>i
+inoremap {} {}<Esc>i
+inoremap $$ $$<Esc>i
 inoremap <> <><ESC>i
 inoremap "" ""<ESC>i
 inoremap '' ''<ESC>i
+
+" escape braces
+inoremap <C-a> <Esc>l%%a
 
 
 """"""""""" python part
