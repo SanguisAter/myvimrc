@@ -103,10 +103,8 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 set tabstop=4       " number of visual spaces per TAB
 set expandtab	    " expand tam into spaces
 set showcmd
-set cursorline
 syntax on
 set nu
-set guifont=Anonymous\ Pro\ 14
 
 if has('gui_running')
     set background=dark
